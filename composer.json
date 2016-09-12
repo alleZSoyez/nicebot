@@ -1,0 +1,13 @@
+{
+    "name": "allezsoyez/nicebot",
+    "description": "a nice bot named nicebot",
+    "authors": [
+        {
+            "name": "allezsoyez",
+            "email": "mail@eaton.kim"
+        }
+    ],
+    "require": {
+        "team-reflex/discord-php": "^4.0"
+    }
+}
