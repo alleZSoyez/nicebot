@@ -94,7 +94,7 @@ $discord->on('ready', function ($discord) {
 					} // end # of sides
 				}
 				else {
-					$message->channel->sendMessage("But <@!$thisuser> I can't roll *that* many dice!  😨");
+					$message->channel->sendMessage("But <@!$thisuser> I can't roll *that* many dice! 😨");
 				} // end # of dice
 			}
 			
