@@ -99,7 +99,7 @@ $discord->on('ready', function ($discord) {
 			}
 			
 			//***** random compliments
-			if ( preg_match("/^!compliment(\s+<@!\d+>)?/i",$thismessage,$user) ){
+			if ( preg_match("/^!compliment\s+(<@(!)?\d+>)?/i",$thismessage,$user) ){
 				
 				/* i am not creative
 				 * some compliments adapted from:
