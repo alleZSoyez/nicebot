@@ -95,7 +95,7 @@ $discord->on('ready', function ($discord) {
 								} // end if die is less than 2 sides
 							}
 							else {
-									$message->channel->sendMessage("But <@!$thisuser> I can't count that high! 😭");
+								$message->channel->sendMessage("But <@!$thisuser> I can't count that high! 😭");
 							} // end # of sides
 						}
 						else {
