@@ -10,6 +10,8 @@
 		// Listen for events here
 		$discord->on('message', function ($message) {
 		
+			global $compliments;
+			
 			echo "{$message->author->username}: {$message->content}", PHP_EOL;
 			
 			if ("{$message->author->id}" != "224008638858133504") { // don't respond to yourself
@@ -25,7 +27,7 @@
 					//********** BEGIN COMMANDS
 					
 					//***** hello nicebot
-					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s(morning|afternoon|day|evening))([,!])?(\s+)<@224008638858133504>/i",$thismessage) ) {
+					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s+(morning|afternoon|day|evening))([,!])?(\s+)<@224008638858133504>/i",$thismessage) ) {
 						$message->channel->sendMessage("Hello <@!$thisuser>!");
 					}
 					
@@ -108,25 +110,30 @@
 						 * happier.com/blog/nice-things-to-say-100-compliments
 						 */
 						 
-						 $compliments = array(
-							0 => "{NAME}, you're cooler than ice on the rocks.",
-							1 => "{NAME} makes me smile.",
-							2 => "{NAME} is my sunshine on a rainy day.",
-							3 => "{NAME} looks really good today!",
-							4 => "I like {NAME}'s style.",
-							5 => "Hey {NAME}, your mouse told me that you have very soft hands.",
-							6 => "Is it hot in here or is it just {NAME}?",
-							7 => "{NAME}'s every thought and motion contributes to the beauty of the universe.",
-							8 => "Hey {NAME}, can you teach me how to be as awesome as you?",
-							9 => "I'm having trouble coming up with a compliment worthy of {NAME}.",
-							10 => "{NAME}'s more fun than bubble wrap.",
-							11 => "On a scale of 1 to 10, {NAME} is [OVERFLOW ERROR]",
-						);
+						 // if the array does not exist or if the array has been reduced to zero length, regenerate it
+						 if ( !isset($compliments) || (isset($compliments) && count($compliments)==0) ) {
+							 $compliments = array(
+								0 => "{NAME}, you're cooler than ice on the rocks.",
+								1 => "{NAME} makes me smile.",
+								2 => "{NAME} is my sunshine on a rainy day.",
+								3 => "{NAME} looks really good today!",
+								4 => "I like {NAME}'s style.",
+								5 => "Hey {NAME}, your mouse told me that you have very soft hands.",
+								6 => "Is it hot in here or is it just {NAME}?",
+								7 => "{NAME}'s every thought and motion contributes to the beauty of the universe.",
+								8 => "Hey {NAME}, can you teach me how to be as awesome as you?",
+								9 => "I'm having trouble coming up with a compliment worthy of {NAME}.",
+								10 => "{NAME}'s more fun than bubble wrap.",
+								11 => "On a scale of 1 to 10, {NAME} is [OVERFLOW ERROR]",
+							);
+						}
 						
-						// generate a compliment
-						$which = mt_rand(0, count($compliments)-1);
+						// randomize the compliments
+						shuffle($compliments);
 						
-						// construct our compliment
+						// construct our compliment. we'll take the last one on the list
+						$which = count($compliments)-1;
+						
 						if (isset($user[1])) {
 							$output = str_replace("{NAME}",$user[1],$compliments[$which]);
 						}
@@ -137,6 +144,10 @@
 						// display compliment
 						$message->channel->sendMessage($output);
 						
+						// remove that item from the the array
+						array_pop($compliments);
+						echo "array length now: ".count($compliments);
+
 					}
 					//********* END COMMANDS
 				}
