@@ -13,21 +13,24 @@
 			global $compliments;
 			
 			echo "{$message->author->username}: {$message->content}", PHP_EOL;
+
+			if ( !preg_match("/(!)?224008638858133504/", "{$message->author->id}") ) { // don't respond to yourself.
 			
-			if ("{$message->author->id}" != "224008638858133504") { // don't respond to yourself
-				if ( "{$message->channel->id}" != "223895430079971329" ) { // only post in botgames
-					//echo "Can't post in channel #{$message->channel->id}.", PHP_EOL;
+				/*
+				if ( "{$message->channel->id}" != "223895430079971329" ) { // only post in channels(s) of your choice
+					echo "Can't post in channel #{$message->channel->id}.", PHP_EOL;
 					return;
 				}
 				else {
-					
+				*/
+				
 					$thismessage = "{$message->content}";
 					$thisuser = "{$message->author->id}";
 					
 					//********** BEGIN COMMANDS
 					
 					//***** hello nicebot
-					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s+(morning|afternoon|day|evening))([,!])?(\s+)<@224008638858133504>/i",$thismessage) ) {
+					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s+(morning|afternoon|day|evening))([,!])?(\s+)<@(!)?224008638858133504>/i",$thismessage) ) {
 						$message->channel->sendMessage("Hello <@!$thisuser>!");
 					}
 					
@@ -146,12 +149,12 @@
 						
 						// remove that item from the the array
 						array_pop($compliments);
-						echo "array length now: ".count($compliments);
+						//echo "array length now: ".count($compliments);
 
 					}
 					//********* END COMMANDS
-				}
-			}
+			//	} // end channel restriction
+			} // end user id check
 		});
 	});
 
