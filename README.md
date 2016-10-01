@@ -10,4 +10,4 @@ Replace "224008638858133504" with your bot's ID so it doesn't respond to itself
 
 Optionally, you can also restrict it by channel
 
-Replace "223895430079971329" with the channel you want it to post in
+Replace "223895430079971329" with the channel(s) you want it to post in
