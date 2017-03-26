@@ -152,6 +152,25 @@
 						//echo "array length now: ".count($compliments);
 
 					}
+					
+					//***** HELP FILE
+					if ( preg_match("/^!help/",$thismessage) ) {
+						
+						// here comes some fugly formatting...
+						$output = 
+"<@!$thisuser>! I'm here to help you! Here's a list of what I can do:
+
+**(some greeting) (ping me)** I'm a nice bot who loves to say hello to humans.
+
+**Doom** is a magic word.
+
+**!compliment <user>** I'll compliment whoever you want. If no one is specified, I'll compliment *you!*
+
+**!roll <#>d<#> <for initiative>** I'll roll dice for you. Example: **!roll 2d20** to roll two d20 dice. If you don't tell me how many to roll, I'll just assume you wanted one.";
+
+						$message->channel->sendMessage($output);						
+					}
+					
 					//********* END COMMANDS
 			//	} // end channel restriction
 			} // end user id check
