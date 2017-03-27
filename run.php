@@ -240,7 +240,7 @@
 							}
 							
 							// too many coins
-							if (isset($flip[1]) && strlen($flip[1]) > 5) {
+							if (isset($flip[1]) && strlen($flip[1]) > 4) {
 								$output = "But <@!$thisuser> I don't even *have* that many coins! :scream:";
 							}
 							// not enough coins
