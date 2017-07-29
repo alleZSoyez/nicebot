@@ -11,19 +11,19 @@
 		$discord->on('message', function ($message) {
 		
 			global $compliments;
+			$clientID = "YOUR CLIENT ID HERE";
 			
 			// uncomment following line while debugging
 			echo "{$message->author->username}: {$message->content}", PHP_EOL;
-
-			if ( !preg_match("/(!)?224008638858133504/", "{$message->author->id}") ) { // don't respond to yourself.
 			
-				/*
-				if ( "{$message->channel->id}" != "223895430079971329" ) { // only post in channels(s) of your choice
+
+			if ( !preg_match("/(!)?".$clientID."/", "{$message->author->id}") ) { // don't respond to yourself.
+			
+				/*if ( "{$message->channel->id}" != "339769590982770689" ) { // only post in channels(s) of your choice
 					echo "Can't post in channel #{$message->channel->id}.", PHP_EOL;
 					return;
 				}
-				else {
-				*/
+				else {*/
 				
 					$thismessage = "{$message->content}";
 					$thisuser = "{$message->author->id}";
@@ -31,7 +31,7 @@
 					//********** BEGIN COMMANDS
 					
 					//***** hello nicebot
-					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s+(morning|afternoon|day|evening))([,!])?(\s+)<@(!)?224008638858133504>/i",$thismessage) ) {
+					if ( preg_match("/^(((hello|hi|hey)(\s+there)?)|greetings|(ay\s+)?yo|good\s+(morning|afternoon|day|evening))([,!])?(\s+)<@(!)?".$clientID.">/i",$thismessage) ) {
 						$message->channel->sendMessage("Hello <@!$thisuser>!");
 					}
 					
@@ -269,7 +269,7 @@
 					}
 					
 					//********* END COMMANDS
-			//	} // end channel restriction
+				//} // end channel restriction
 			} // end user id check
 		});
 	});

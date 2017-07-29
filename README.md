@@ -8,8 +8,10 @@ just create a file in the same directory called "token.php" with this format:
 	$token = "YOUR_TOKEN_HERE";
 ```
 
-Replace "224008638858133504" with your bot's ID so it doesn't respond to itself
+In addition, please change line 14 in run.php to include your bot's client ID so it does not respond to itself.
 
-Optionally, you can also restrict it by channel
+```
+$clientID = "YOUR_CLIENT_ID_HERE";
+```
 
-Replace "223895430079971329" with the channel(s) you want it to post in
+Optionally, you can also restrict it by channel starting on line 22 of run.php should the built-in permissions management in discord not be enough.
