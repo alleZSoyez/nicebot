@@ -11,7 +11,7 @@
 		$discord->on('message', function ($message) {
 		
 			global $compliments;
-			$clientID = "YOUR CLIENT ID HERE";
+			$clientID = "YOUR_CLIENT_ID_HERE";
 			
 			// uncomment following line while debugging
 			echo "{$message->author->username}: {$message->content}", PHP_EOL;
